@@ -1,0 +1,17 @@
+- name: Install Java for CentOS
+  dnf:
+    name: java-11-openjdk
+    state: present
+
+- name: Install Logstash on CentOS
+  dnf:
+    name: logstash
+    state: present
+  become: true
+
+- name: Enable and start Logstash service
+  systemd:
+    name: logstash
+    enabled: yes
+    state: started
+  become: true

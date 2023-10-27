@@ -1,0 +1,8 @@
+[elasticsearch_ubuntu1]
+192.168.1.30
+
+[kibana_ubuntu2]
+192.168.1.19
+
+[logstash_centos]
+192.168.1.35

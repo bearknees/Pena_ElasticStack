@@ -1,0 +1,12 @@
+- name: Install Kibana on Ubuntu
+  apt:
+    name: kibana
+    state: present
+  become: true
+
+- name: Enable and start Kibana service
+  systemd:
+    name: kibana
+    enabled: yes
+    state: started
+  become: true

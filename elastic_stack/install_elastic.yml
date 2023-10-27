@@ -1,0 +1,24 @@
+- hosts: all
+  become: true
+  pre_tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+    - name: Update dnf cache
+      dnf:
+        update_cache: yes
+      when: ansible_distribution == "CentOS"
+
+- hosts: elasticsearch_ubuntu1
+  roles:
+    - role: ubuntu_server
+
+- hosts: kibana_ubuntu2
+  roles:
+    - role: ubuntu_server2
+
+- hosts: logstash_centos
+  become: yes
+  roles:
+    - role: centos_server

@@ -1,0 +1,24 @@
+- name: Install Java for Ubuntu
+  apt:
+    name: default-jre
+    state: present
+  become: true
+
+- name: Import GPG key for Elasticsearch repository
+  apt_key:
+    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    state: present
+  become: true
+
+- name: Add Elasticsearch repository
+  apt_repository:
+    repo: deb https://artifacts.elastic.co/packages/7.x/apt stable main
+    state: present
+    filename: elastic
+  become: true
+
+- name: Install Elasticsearch for Ubuntu
+  apt:
+    name: elasticsearch
+    state: present
+  become: true
